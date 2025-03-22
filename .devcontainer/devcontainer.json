@@ -3,7 +3,7 @@
     "image": "mcr.microsoft.com/devcontainers/python:3.10",
     "features": {
         "github-cli": "latest",
-        "ghcr.io/devcontainers/features/powershell:1": {}
+        "ghcr.io/devcontainers/features/powershell:1": {}  // PowerShell Core (pwsh) feature
     },
     "customizations": {
         "vscode": {
@@ -29,19 +29,19 @@
                 "formulahendry.code-runner"
             ],
             "settings": {
-                "python.defaultInterpreterPath": "${workspaceFolder}/venv/Scripts/python.exe",
+                "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python", // Correct for Linux container
                 "python.terminal.activateEnvironment": true,
-                "terminal.integrated.profiles.windows": {
+                "terminal.integrated.profiles.linux": {  // PowerShell Core for Linux containers (pwsh)
                     "PowerShell": {
-                        "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                        "path": "/usr/bin/pwsh",  // Path to PowerShell Core in the container
                         "args": [
                             "-NoExit",
                             "-Command",
-                            "& { ${workspaceFolder}\\venv\\Scripts\\Activate.ps1; Import-Module PSReadLine; Clear-Host }"
+                            "& { ${workspaceFolder}/venv/bin/Activate.ps1; Import-Module PSReadLine; Clear-Host }"  // Activate virtual environment in PowerShell Core
                         ]
                     }
                 },
-                "terminal.integrated.defaultProfile.windows": "PowerShell"
+                "terminal.integrated.defaultProfile.linux": "PowerShell"  // Set PowerShell Core as the default terminal
             }
         }
     },
