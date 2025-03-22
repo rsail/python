@@ -5,18 +5,21 @@
         }
     ],
     "settings": {
-        "python.defaultInterpreterPath": "${workspaceFolder}/venv/Scripts/python.exe",
+        "python.defaultInterpreterPath": "${workspaceFolder}/venv/Scripts/python.exe",  // Update for Windows-style path in PowerShell
         "python.terminal.activateEnvironment": true,
-        "terminal.integrated.profiles.windows": {
+        "terminal.integrated.profiles.linux": {   
             "PowerShell": {
-                "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "path": "/usr/bin/pwsh",  // Path to PowerShell in the container (use pwsh, not powershell.exe)
                 "args": [
                     "-NoExit",
                     "-Command",
-                    "& { ${workspaceFolder}\\venv\\Scripts\\Activate.ps1; Import-Module PSReadLine; Clear-Host }"
+                    "& { ${workspaceFolder}/venv/Scripts/Activate.ps1; Import-Module PSReadLine; Clear-Host }"  // Activate venv in PowerShell
                 ]
             }
         },
-        "terminal.integrated.defaultProfile.windows": "PowerShell"
+        "terminal.integrated.defaultProfile.linux": "PowerShell",  // Set PowerShell as the default terminal
+        "files.exclude": {
+            "**/venv": false  // Make sure venv is not excluded from Explorer
+        }
     }
 }
