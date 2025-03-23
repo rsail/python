@@ -1,0 +1,58 @@
+{
+    "name": "Python Dev Environment",
+    "image": "mcr.microsoft.com/devcontainers/python:3.10",
+    "features": {
+        "github-cli": "latest",
+        "ghcr.io/devcontainers/features/powershell:1": {}  // PowerShell Core (pwsh) feature
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bierner.emojisense",
+                "michaelCurrin.auto-commit-msg",
+                "ms-python.black-formatter",
+                "github.codespaces",
+                "github.vscode-pull-request-github",
+                "github.github-vscode-theme",
+                "ms-toolsai.jupyter",
+                "esbenp.prettier-vscode",
+                "ms-python.python",
+                "ms-python.debugpy",
+                "ericsia.pythonsnippets3",
+                "ms-vscode.cpptools",
+                "ms-vscode.cmake-tools",
+                "clangd.clangd",
+                "hashicorp.terraform",
+                "ms-vscode.azure-arm",
+                "hashicorp.terraform-docs",
+                "ms-vscode.powershell",
+                "formulahendry.code-runner"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python", // Correct for Linux container
+                "python.terminal.activateEnvironment": true,
+                "terminal.integrated.profiles.linux": {  // PowerShell Core for Linux containers (pwsh)
+                    "PowerShell": {
+                        "path": "/usr/bin/pwsh",  // Path to PowerShell Core in the container
+                        "args": [
+                            "-NoExit",
+                            "-Command",
+                            "& { ${workspaceFolder}/venv/bin/Activate.ps1; Import-Module PSReadLine; Clear-Host }"  // Activate virtual environment in PowerShell Core
+                        ]
+                    }
+                },
+                "terminal.integrated.defaultProfile.linux": "PowerShell",  // Set PowerShell Core as the default terminal
+                "files.exclude": {
+                    "**/.devcontainer": true,  // Hide the .devcontainer folder
+                    "**/*.code-workspace": true,  // Hide all *.code-workspace files
+                    "**/read.md": true,
+                    "**/requirements.txt":true,
+                    "**/.history":true,
+                    "**/venv":true,
+                    "**/.gitignore":true
+                }
+            }
+        }
+    },
+    "postCreateCommand": "git config --local commit.gpgsign false && git config --local branch.master.mergeOptions '--allow-unrelated-histories' && bash ./.devcontainer/setup.sh"
+}

@@ -1,0 +1,16 @@
+
+# divcontainer
+.divcontainer/
+
+*.code-workplace
+
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# VS Code settings
+.vscode/
+
+# Other
+*.log
