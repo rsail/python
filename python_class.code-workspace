@@ -17,9 +17,6 @@
                 ]
             }
         },
-        "terminal.integrated.defaultProfile.linux": "PowerShell",  // Set PowerShell as the default terminal
-        "files.exclude": {
-            "**/venv": false  // Make sure venv is not excluded from Explorer
-        }
+        "terminal.integrated.defaultProfile.linux": "PowerShell"  // Set PowerShell as the default terminal       
     }
 }
