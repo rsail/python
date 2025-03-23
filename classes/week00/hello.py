@@ -7,4 +7,4 @@ print(name)
 
 #add a statement to print out "hello, (name entered)!"
 
-print("hello, " + name.capitalize() + "!")
+print("hello, " + name.capitalize() + "!!")
