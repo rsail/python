@@ -41,7 +41,16 @@
                         ]
                     }
                 },
-                "terminal.integrated.defaultProfile.linux": "PowerShell"  // Set PowerShell Core as the default terminal
+                "terminal.integrated.defaultProfile.linux": "PowerShell",  // Set PowerShell Core as the default terminal
+                "files.exclude": {
+                    "**/.devcontainer": true,  // Hide the .devcontainer folder
+                    "**/*.code-workspace": true,  // Hide all *.code-workspace files
+                    "**/read.md": true,
+                    "**/requirements.txt":true,
+                    "**/.history":true,
+                    "**/venv":true,
+                    "**/.gitignore":true
+                }
             }
         }
     },
